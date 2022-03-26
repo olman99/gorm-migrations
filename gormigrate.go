@@ -1,14 +1,22 @@
 package main
 
 import (
-	"log"
-	"path"
-	"runtime"
+	"fmt"
+	"os"
 )
 
+var Number uint
+
+func init() {
+	Number = 0
+}
+
 func main() {
-	if _, file, _, ok := runtime.Caller(0); ok {
-		__dirname := path.Dir(file)
-		log.Println("__dirname:", __dirname)
+	mydir, err := os.Getwd()
+	if err != nil {
+		fmt.Println(err)
 	}
+	fmt.Println(mydir)
+	Number += 1
+	fmt.Println(Number)
 }
