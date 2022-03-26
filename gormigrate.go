@@ -1,16 +1,14 @@
 package main
 
 import (
-	"fmt"
-	"os"
-	"path/filepath"
+	"log"
+	"path"
+	"runtime"
 )
 
 func main() {
-	ex, err := os.Executable()
-	if err != nil {
-		panic(err)
+	if _, file, _, ok := runtime.Caller(0); ok {
+		__dirname := path.Dir(file)
+		log.Println("__dirname:", __dirname)
 	}
-	exPath := filepath.Dir(ex)
-	fmt.Println(exPath)
 }
