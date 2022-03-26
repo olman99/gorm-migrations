@@ -2,10 +2,15 @@ package main
 
 import (
 	"fmt"
-	"path"
+	"os"
+	"path/filepath"
 )
 
 func main() {
-	fmt.Println(path.Base("."))
-	fmt.Println(path.Dir("."))
+	ex, err := os.Executable()
+	if err != nil {
+		panic(err)
+	}
+	exPath := filepath.Dir(ex)
+	fmt.Println(exPath)
 }
